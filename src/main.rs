@@ -7,6 +7,8 @@ const MAX_SIZE: i64 = 100000000;
 fn main() {
     let core_ids = core_affinity::get_core_ids().unwrap();
 
+    let core_ids = core_ids[core_ids.len() / 2..core_ids.len() - 1].to_vec();
+
     let counter = Arc::new(Mutex::new(0i64));
 
     let handles = core_ids
